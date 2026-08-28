@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="en" style="--bs-primary: #ff0000;--bs-primary-rgb: 255,0,0;--bs-secondary: #ff002e;--bs-secondary-rgb: 255,0,46;--bs-light: #5e0000;--bs-light-rgb: 94,0,0;--bs-dark: #ff0000;--bs-dark-rgb: 255,0,0;--bs-body-color: #ff0000;--bs-body-bg: #290000;filter: grayscale(0%) hue-rotate(0deg) invert(0%) saturate(100%) sepia(0%);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - KatieBby_89</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                const iconTheme = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const adaptIcon = !!themeSwitcher.dataset.bsAdaptIcon;
+
+                    if (adaptIcon) {
+                        const btnIcon = themeSwitcher.querySelector('[data-bss-adaptable]');
+
+                        try {
+                            const themeIcons = JSON.parse(themeSwitcher.dataset.bssIcons || "{}");
+                            const newIconMarkup = themeIcons[iconTheme];
+
+                            const template = document.createElement("template");
+                            template.innerHTML = newIconMarkup;
+
+                            const newIconFragment = template.content.cloneNode(true);
+
+                            if (newIconFragment?.children?.length) {
+                                newIconFragment.children[0].dataset.bssAdaptable = true;
+                            }
+
+                            btnIcon.replaceWith(newIconFragment);
+                        } catch (e) {}
+                    }
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Source%20Sans%20Pro.css">
+    <link rel="stylesheet" href="assets/css/bss-overrides.css">
+    <link rel="stylesheet" href="assets/css/Footer-Clean-icons.css">
+    <link rel="stylesheet" href="assets/css/Lightbox-Gallery-baguetteBox.min.css">
+</head>
+
+<body class="d-flex flex-column min-h-100" id="page-top" style="background: rgb(41,0,0);">
+    <header class="d-flex masthead" style="background: #290000;color: rgb(255,0,0);height: 500px;">
+        <div class="container mt-0 pt-0 mb-10 pb-10 my-auto text-center">
+            <h1 class="text-primary mb-1">KatieBby_89</h1>
+            <h3 class="mb-5"><em class="text-primary">A vtuber &amp; creator</em></h3>
+        </div>
+    </header>
+    <div class="container flex-column flex-grow-1 py-4 py-xl-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>Commissions</h2>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-xl-3 flex-grow-1 justify-content-center">
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/21479" style="height: auto;width: auto;"><br><strong><span style="color: rgb(255, 0, 0);">Twitch/Discord Emotes ANIMATED</span></strong><br><br></a>
+                    <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 37px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$8</h4>
+                    <p>High quality resolution animated emotes of your choice! If you're not sure what kind of emote you want you can just write 'Surprise me!' <br>❤️❤️</p><img class="me-0" src="assets/img/110201_CuteWink_Squish.gif" width="89" height="89" style="width: 84px;height: 84px;"><img class="img-fluid me-1" width="224" height="224" src="assets/img/110215_ShockCloseup.gif" style="width: 84px;height: 84px;"><img class="img-fluid" width="224" height="224" src="assets/img/110243_SmugCloseupZoom.gif" style="width: 84px;height: 84px;">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/21478" style="height: auto;width: auto;"><strong><span style="color: rgb(254, 0, 0);">Twitch/Discord Emotes STATIC</span></strong></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 37px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$5</h4>
+                    </div>
+                    <p>High quality resolution Emotes of your choice! If you're not sure what kind of emote you want you can just write 'Surprise me!' ❤️❤️</p><img class="img-fluid w-100 h-100 me-0" src="assets/img/104707_TWITCH_EMTOTES_SAMPLE.png" width="89" height="89" style="width: 84px;height: 84px;">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/14724" style="height: auto;width: auto;"><strong><span style="color: rgb(254, 0, 0);">💗Shoulders up character design ready to rig💗</span></strong></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 45px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$50</h4>
+                    </div>
+                    <p>Commission me to draw and design a shoulder up body character in my style (Use your reference images or I can help design if you don't have I can help with ideas!). For commercial use. (Credit KatieBby_89)</p><img class="h-100 me-0" src="assets/img/101737_Screenshot_20230722_150501_VTube_Studio.jpg" width="202" height="153">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/14725" style="height: auto;width: auto;"><strong><span style="color: rgb(254, 0, 0);">🩷Half body character design ready to rig🩷</span></strong></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 45px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$70</h4>
+                    </div>
+                    <p>Commission me to draw and design a half body character in my style (Use your reference images or I can help design if you don't have I can help with ideas!). For commercial use. (Credit KatieBby_89)</p><img class="h-100 me-0" src="assets/img/101615_F52uOr2WgAAxEtJ.jpeg" width="202" height="153">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/14726" style="height: auto;width: auto;"><strong><span style="color: rgb(254, 0, 0);">❤️Full body character design ready to rig❤️</span></strong></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 45px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$90</h4>
+                    </div>
+                    <p>Commission me to draw a full-body character in my style (with your references or if you have no design idea I can help!) For commercial use. (Credit KatieBby_89)<br><br>Add-ons available</p><img class="h-100 me-0" src="assets/img/101217_Screenshot_20231010_143332_Gallery.jpg" width="202" height="153">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/14774" style="height: auto;width: auto;"><strong><span style="color: rgb(254, 0, 0);">💙Bust up vtuber model rig💙</span></strong></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 45px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$70</h4>
+                    </div>
+                    <p>You'll receive:<br>-Fully rigged Bust up vtuber model (XYZ angles, breathing, blinking, talking)<br>-Basic expressions (happy, sad, angry, shock)<br>-Basic physics.<br>This model can be used for commercial purposes as long as you credit me: KatieBby_89</p><img class="w-100 h-100 me-0" src="assets/img/103448_175240_image07.gif" width="342" height="235">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/14773" style="height: auto;width: auto;"><span style="color: rgb(254, 0, 0);">💜Half Body Vtuber Rigging💜</span><br></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 61px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$100</h4>
+                    </div>
+                    <p><br>You'll receive:<br>-Fully rigged half body vtuber model (XYZ angles, breathing, blinking, talking)<br>-Basic expressions (happy, sad, angry, shock)<br>-Basic physics<br><br>Rigging can take up to 2 weeks or longer depending on the model complexity.<br>This model can be used for commercial purposes as long as you credit me:<br>KatieBby_89<br><br>Add-ons available</p><img class="w-100 h-100 me-0" src="assets/img/102654_201447_hangfish_gif.gif" width="342" height="235">
+                </div>
+            </div>
+            <div class="col-auto border rounded-5 border-2 border-primary" style="text-align: center;">
+                <div class="mt-2 pt-0 px-3"><a class="fs-4 text-decoration-none text-center link-primary d-inline-flex justify-content-center align-items-center" href="https://buymeacoffee.com/katiebby89/commissions/14775" style="height: auto;width: auto;"><span style="color: rgb(254, 0, 0);">❤️Full body rigged Live2D vtuber model❤️</span><br></a>
+                    <div>
+                        <h4 class="text-center mt-1 pt-0 mb-0 pb-0" style="height: 34px;width: 59px;text-align: center;display: inline-block;background: rgba(255,0,0,0.23);border-width: 1px;border-style: solid;border-radius: 8px;">$150</h4>
+                    </div>
+                    <p>You'll receive:<br>-Fully rigged full body vtuber model (XYZ angles, breathing, blinking, talking)<br>-Basic expressions (happy, sad, angry, shock)<br>-Basic physics<br><br>Rigging can take up to 2 weeks or longer depending on the model complexity.<br>This model can be used for commercial purposes as long as you credit me: <br>KatieBby_89</p><img class="w-100 h-100 me-0" src="assets/img/103836_200818_image04.gif" width="342" height="235">
+                </div>
+            </div>
+        </div>
+        <section class="py-4 py-xl-5">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-8 col-xl-6 text-center mx-auto">
+                        <h2>Artwork Examples</h2>
+                    </div>
+                </div>
+                <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-3" data-bss-baguettebox="">
+                    <div class="col"><a href="assets/img/Cheer%2001%20anim%201024x1024.gif"><img class="img-fluid w-100 h-100" src="assets/img/Cheer%2001%20anim%201024x1024.gif" width="281" height="158"></a></div>
+                    <div class="col"><a href="assets/img/Confused%20silly%20anim%201024x1024.gif"><img class="img-fluid" src="assets/img/Confused%20silly%20anim%201024x1024.gif"></a></div>
+                    <div class="col"><a href="assets/img/Eugh%20anim%201024x1024.gif"><img class="img-fluid" src="assets/img/Eugh%20anim%201024x1024.gif"></a></div>
+                    <div class="col"><a href="assets/img/FuFu%20Laugh%20anim%20510x510.gif"><img class="img-fluid" src="assets/img/FuFu%20Laugh%20anim%20510x510.gif"></a></div>
+                    <div class="col"><a href="assets/img/Hearts%20Laugh%20anim%20510x510.gif"><img class="img-fluid" src="assets/img/Hearts%20Laugh%20anim%20510x510.gif"></a></div>
+                    <div class="col"><a href="assets/img/Pleading%20510x510%20anim.gif"><img class="img-fluid" src="assets/img/Pleading%20510x510%20anim.gif"></a></div>
+                    <div class="col"><a href="assets/img/Shocked%20anim%20510x510.gif"><img class="img-fluid" src="assets/img/Shocked%20anim%20510x510.gif"></a></div>
+                    <div class="col"><a href="assets/img/Pouty.png"><img class="img-fluid" src="assets/img/Pouty.png"></a></div>
+                    <div class="col"><a href="assets/img/Thumbs%20up.png"><img class="img-fluid" src="assets/img/Thumbs%20up.png"></a></div>
+                    <div class="col"><a href="assets/img/Erm%20actually-.png"><img class="img-fluid" src="assets/img/Erm%20actually-.png"></a></div>
+                    <div class="col"><a href="assets/img/Erm-.png"><img class="img-fluid" src="assets/img/Erm-.png"></a></div>
+                    <div class="col"><a href="assets/img/Rendered.png"><img class="img-fluid" src="assets/img/Rendered.png"></a></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="text-center" style="background: rgb(17,0,0);color: rgb(255,0,0);">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-3" style="border-style: none;">
+                <div class="col col-xl-4">
+                    <p class="my-2" style="color: rgb(255,0,0);">Copyright&nbsp;© 2026 KatieBby_89</p>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item me-4"><a class="bs-icon-circle bs-icon-primary bs-icon" href="https://x.com/Bby89Katie" style="background: rgb(255,0,0);"><svg class="bi bi-twitter-x" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="transform: scale(1);">
+                                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"></path>
+                                </svg></a></li>
+                        <li class="list-inline-item me-4"><a class="bs-icon-circle bs-icon-primary bs-icon" href="https://www.twitch.tv/katiebby_89" style="background: rgb(255,0,0);"><svg class="bi bi-twitch" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M3.857 0 1 2.857v10.286h3.429V16l2.857-2.857H9.57L14.714 8V0zm9.714 7.429-2.285 2.285H9l-2 2v-2H4.429V1.143h9.142z"></path>
+                                    <path d="M11.857 3.143h-1.143V6.57h1.143zm-3.143 0H7.571V6.57h1.143z"></path>
+                                </svg></a></li>
+                        <li class="list-inline-item me-4"><a class="bs-icon-circle bs-icon-primary bs-icon" href="https://www.youtube.com/@katiebby89" style="background: rgb(255,0,0);"><svg class="bi bi-youtube" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"></path>
+                                </svg></a></li>
+                        <li class="list-inline-item me-4"><a class="bs-icon-circle bs-icon-primary bs-icon" href="https://buymeacoffee.com/katiebby89" style="background: rgb(255,0,0);"><svg class="icon icon-tabler icon-tabler-cup" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M5 11h14v-3h-14z"></path>
+                                    <path d="M17.5 11l-1.5 10h-8l-1.5 -10"></path>
+                                    <path d="M6 8v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"></path>
+                                    <path d="M15 5v-2"></path>
+                                </svg></a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a href="#" style="color: rgb(255,15,0);">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" style="color: rgb(255,15,0);">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/stylish-portfolio.js"></script>
+    <script src="assets/js/Lightbox-Gallery-baguetteBox.min.js"></script>
+    <script src="assets/js/Lightbox-Gallery.js"></script>
+</body>
+
+</html>
