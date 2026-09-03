@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katiebby89.github.io/sitemap.xml
